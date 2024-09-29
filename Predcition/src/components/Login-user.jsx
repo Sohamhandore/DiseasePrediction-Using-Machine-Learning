@@ -28,9 +28,9 @@ function LoginPage() {
             <div className="input-group">
               <input type="password" placeholder="Password" required />
             </div>
-            <button type="submit" className="login-btn">
+            <Link to="/user-dashboard"><button type="submit" className="login-btn">
               LOGIN
-            </button>
+            </button></Link>
           </form>
           <div className="footer-links">
             <Link to="/forgot">Forgot Username / Password?</Link>

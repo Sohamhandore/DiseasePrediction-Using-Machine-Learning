@@ -24,9 +24,9 @@ function Logi() {
             <div className="input-group">
               <input type="password" placeholder="Password" required />
             </div>
-            <button type="submit" className="login-btn">
+            <Link to="/doctor-dashboard"><button type="submit" className="login-btn">
               LOGIN
-            </button>
+            </button></Link>
           </form>
           <div className="footer-links">
             {/* Use Link for internal navigation */}
