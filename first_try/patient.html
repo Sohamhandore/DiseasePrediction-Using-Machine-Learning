@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Health Predictor</h1>
+        <form id="healthForm" enctype="multipart/form-data">
+            <label for="bloodTestReport">Upload Blood Test Report (PDF):</label>
+            <input type="file" id="bloodTestReport" name="bloodTestReport" accept="application/pdf" required>
+            
+            <label for="bloodPressure">Blood Pressure:</label>
+            <input type="text" id="bloodPressure" name="bloodPressure" placeholder="e.g. 120/80" required>
+            
+            <button type="submit">Predict</button>
+        </form>
+        <div id="results"></div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
