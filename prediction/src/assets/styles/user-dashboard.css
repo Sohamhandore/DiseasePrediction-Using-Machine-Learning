@@ -19,68 +19,87 @@ body {
 
 .disease-prediction-dashboard {
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  overflow: hidden;
+}
+
+.disease-prediction-dashboard h2 {
+  color: #333;
+  text-align: center;
+}
+
+.disease-prediction-dashboard form {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.disease-prediction-dashboard label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.disease-prediction-dashboard input[type="file"],
+.disease-prediction-dashboard select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.disease-prediction-dashboard button {
+  background-color: #4CAF50;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.disease-prediction-dashboard button:hover {
+  background-color: #45a049;
+  color: #000000;
 }
 
 .disease-nav {
-  width: var(--nav-width);
-  background-color: var(--card-background);
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
-  box-shadow: var(--box-shadow);
+  background-color: #f0f0f0;
+  padding: 1rem;
 }
 
 .disease-nav h2 {
-  margin-bottom: 30px;
-  font-size: 1.8rem;
-  color: var(--primary-color);
-  text-align: center;
-  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .disease-nav ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
-}
-
-.disease-nav li {
-  margin-bottom: 15px;
+  display: flex;
+  gap: 1rem;
 }
 
 .disease-nav button {
-  width: 100%;
-  padding: 15px;
-  background-color: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
+  background: none;
+  border: none;
   cursor: pointer;
-  text-align: left;
-  font-size: 1.1rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border-radius: var(--border-radius);
-}
-
-.disease-nav button:hover {
-  background-color: var(--primary-color);
-  color: white;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .disease-nav button.active {
-  background-color: var(--primary-color);
+  background-color: #007bff;
   color: white;
-  font-weight: 600;
+  border-radius: 4px;
 }
 
 .main-content {
   flex-grow: 1;
+  padding: 2rem;
   overflow-y: auto;
-  padding: 40px;
 }
 
 .prediction-content {
@@ -88,20 +107,16 @@ body {
   margin: 0 auto;
 }
 
-h1 {
-  color: var(--primary-color);
-  margin-bottom: 30px;
-  font-size: 2.5rem;
-  font-weight: 700;
+.prediction-content h1 {
+  margin-bottom: 1rem;
 }
 
 .card {
-  background-color: var(--card-background);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 30px;
-  margin-bottom: 30px;
-  transition: transform 0.3s ease;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* .card:hover {
@@ -116,7 +131,7 @@ h1 {
 }
 
 .form-group {
-  margin-bottom: 25px;
+  margin-bottom: 1rem;
 }
 
 label {
@@ -141,15 +156,12 @@ input[type="file"]:hover {
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 12px 25px;
-  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-primary:hover {
@@ -158,14 +170,15 @@ input[type="file"]:hover {
 }
 
 .result-card {
-  background-color: #e9ecef;
-  border-left: 5px solid var(--secondary-color);
+  background-color: #f9f9f9;
 }
 
 .prediction-result {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 15px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #e6f7ff;
+  border: 1px solid #91d5ff;
+  border-radius: 4px;
 }
 
 .prediction-result.positive {
@@ -233,4 +246,133 @@ input[type="file"]:hover {
   .main-content {
     padding: 20px;
   }
+}
+
+.prediction-result table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.prediction-result th, .prediction-result td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.prediction-result th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.prediction-result tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.prediction-result tr:hover {
+  background-color: #f5f5f5;
+}
+
+.prediction-result tr.abnormal {
+  background-color: #ffcccc;
+}
+
+.prediction-result tr.abnormal:hover {
+  background-color: #ffb3b3;
+}
+
+.prediction-table-container {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.prediction-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.prediction-table th,
+.prediction-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.prediction-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.prediction-table tr.abnormal {
+  background-color: #ffcccc;
+}
+
+.prediction-table tr.normal {
+  background-color: #ccffcc;
+}
+
+.prediction-table tr:hover {
+  background-color: #ddd;
+}
+
+.normal {
+  color: green;
+}
+
+.at-risk {
+  color: orange;
+}
+
+.high-risk {
+  color: red;
+}
+
+.status-normal {
+  color: green;
+}
+
+.status-abnormal {
+  color: red;
+}
+
+.prediction-table td, .prediction-table th {
+  padding: 10px;
+  text-align: left;
+}
+
+.prediction-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.prediction-table tr:hover {
+  background-color: #ddd;
+}
+
+.all-results-table-container {
+  margin-top: 20px;
+}
+
+.all-results-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.all-results-table th,
+.all-results-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.all-results-table th {
+  background-color: #f2f2f2;
+}
+
+.all-results-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.all-results-table tr:hover {
+  background-color: #f5f5f5;
 }
