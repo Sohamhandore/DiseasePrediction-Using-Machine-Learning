@@ -37,7 +37,8 @@ def extract_blood_report_data(pdf_path):
             if not any(word in test_name.lower() for word in ['note', 'ratio']):
                 test_results.append([test_name, value, unit])
 
-    return patient_info, test_results
+    test_results_dict = {test[0]: float(test[1]) for test in test_results}
+    return patient_info, test_results_dict
 
 def main():
     pdf_path = 'file:///C:/Users/admin/Downloads/sample_report.pdf'

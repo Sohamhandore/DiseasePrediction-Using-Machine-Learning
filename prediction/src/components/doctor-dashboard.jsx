@@ -35,14 +35,33 @@ const DoctorDashboard = () => {
       return;
     }
 
-    // Mock predictions (replace with actual API calls)
-    const mockPredictions = files.map((file) => ({
-      fileName: file.name,
-      prediction: Math.random() > 0.5,
-    }));
-    setPredictions(mockPredictions);
+    const predictions = [];
+    for (const file of files) {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('disease_type', selectedDisease);
 
-    // Clear the selected files
+      try {
+        const response = await fetch('http://localhost:5000/process_pdf', {
+          method: 'POST',
+          body: formData,
+        });
+        const data = await response.json();
+        if (response.ok) {
+          predictions.push({
+            fileName: file.name,
+            prediction: data.prediction,
+          });
+        } else {
+          alert(`Error processing ${file.name}: ${data.error || 'Unknown error'}`);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert(`Error processing ${file.name}`);
+      }
+    }
+
+    setPredictions(predictions);
     setFiles([]);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
@@ -65,10 +84,8 @@ const DoctorDashboard = () => {
             {predictions.map((pred, index) => (
               <tr key={index}>
                 <td>{pred.fileName}</td>
-                <td className={pred.prediction ? "positive" : "negative"}>
-                  {pred.prediction
-                    ? `May have ${selectedDisease} disease`
-                    : `Likely not to have ${selectedDisease} disease`}
+                <td className={pred.prediction.toLowerCase().replace(' ', '-')}>
+                  {pred.prediction}
                 </td>
               </tr>
             ))}

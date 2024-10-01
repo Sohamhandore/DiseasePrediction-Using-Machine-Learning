@@ -17,31 +17,34 @@ const DiseasePrediction = () => {
       return;
     }
 
-    // Mock prediction (replace with actual API call)
-    const mockPrediction = Math.random() > 0.5;
-    setPredictionResult(mockPrediction);
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('disease_type', selectedDisease);
+
+    try {
+      const response = await fetch('http://localhost:5000/process_pdf', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setPredictionResult(data.prediction);
+      } else {
+        alert(data.error || 'An error occurred while processing the PDF');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while processing the PDF');
+    }
   };
 
   const renderPredictionResult = () => {
     if (predictionResult === null) return null;
 
-    const diseaseMessages = {
-      liver: "liver disease",
-      heart: "heart disease",
-      kidney: "kidney disease",
-    };
-
-    const message = diseaseMessages[selectedDisease];
-
     return (
-      <div
-        className={`prediction-result ${
-          predictionResult ? "positive" : "negative"
-        }`}
-      >
-        {predictionResult
-          ? `The person may have ${message}. Please consult a doctor.`
-          : `The person is likely not to have ${message}.`}
+      <div className={`prediction-result ${predictionResult.toLowerCase().replace(' ', '-')}`}>
+        {`The person has a ${predictionResult} of ${selectedDisease} disease.`}
+        {predictionResult !== "Normal" && " Please consult a doctor."}
       </div>
     );
   };
