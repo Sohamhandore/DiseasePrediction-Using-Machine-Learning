@@ -351,6 +351,7 @@ input[type="file"]:hover {
 
 .all-results-table-container {
   margin-top: 20px;
+  overflow-x: auto;
 }
 
 .all-results-table {
@@ -375,4 +376,12 @@ input[type="file"]:hover {
 
 .all-results-table tr:hover {
   background-color: #f5f5f5;
+}
+
+.all-results-table tr.abnormal {
+  background-color: #ffdddd;
+}
+
+.all-results-table tr.normal {
+  background-color: #ddffdd;
 }

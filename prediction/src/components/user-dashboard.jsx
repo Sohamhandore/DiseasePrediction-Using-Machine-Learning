@@ -24,9 +24,12 @@ const UserDashboard = () => {
     formData.append('disease_type', selectedDisease);
 
     try {
-      const response = await fetch('http://localhost:5000/process_pdf', {
+      const response = await fetch('http://localhost:5000/upload', {
         method: 'POST',
         body: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
       const data = await response.json();
       if (response.ok) {
@@ -61,7 +64,7 @@ const UserDashboard = () => {
         
         {allResults.length > 0 && (
           <div className="prediction-table-container">
-            <h4>Relevant Test Results</h4>
+            <h4>Test Results</h4>
             <table className="prediction-table">
               <thead>
                 <tr>
@@ -78,28 +81,6 @@ const UserDashboard = () => {
                     <td>{result.value}</td>
                     <td>Up to {result.threshold}</td>
                     <td>{result.value > result.threshold ? 'Abnormal' : 'Normal'}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-        
-        {predictionResult.test_results && Object.keys(predictionResult.test_results).length > 0 && (
-          <div className="all-results-table-container">
-            <h4>All Extracted Test Results</h4>
-            <table className="all-results-table">
-              <thead>
-                <tr>
-                  <th>Test</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.entries(predictionResult.test_results).map(([test, value], index) => (
-                  <tr key={index}>
-                    <td>{test}</td>
-                    <td>{value}</td>
                   </tr>
                 ))}
               </tbody>
