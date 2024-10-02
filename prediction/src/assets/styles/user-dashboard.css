@@ -282,20 +282,28 @@ input[type="file"]:hover {
 }
 
 .prediction-table-container {
-  margin-top: 1rem;
+  margin-top: 20px;
   overflow-x: auto;
+}
+
+.patient-info {
+  white-space: pre-wrap;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;
 }
 
 .prediction-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 0.5rem;
+  margin-top: 20px;
 }
 
 .prediction-table th,
 .prediction-table td {
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 8px;
   text-align: left;
 }
 
@@ -304,16 +312,12 @@ input[type="file"]:hover {
   font-weight: bold;
 }
 
-.prediction-table tr.abnormal {
-  background-color: #ffcccc;
-}
-
-.prediction-table tr.normal {
-  background-color: #ccffcc;
+.prediction-table tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
 .prediction-table tr:hover {
-  background-color: #ddd;
+  background-color: #f5f5f5;
 }
 
 .normal {

@@ -23,13 +23,16 @@ const UserDashboard = () => {
     formData.append('file', file);
     formData.append('disease_type', selectedDisease);
 
+    console.log('File being sent:', file);
+    console.log('FormData contents:');
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+
     try {
       const response = await fetch('http://localhost:5000/upload', {
         method: 'POST',
         body: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
       });
       const data = await response.json();
       if (response.ok) {
@@ -51,41 +54,49 @@ const UserDashboard = () => {
   const renderPredictionResult = () => {
     if (!predictionResult) return null;
 
-    const allResults = [
-      ...(predictionResult.abnormal_results || []),
-      ...(predictionResult.normal_results || [])
-    ];
-
     return (
       <div className="card result-card">
         <h3>Prediction Result for {selectedDisease.charAt(0).toUpperCase() + selectedDisease.slice(1)} Disease</h3>
         <p><strong>Risk Level:</strong> <span className={predictionResult.risk_level.toLowerCase().replace(' ', '-')}>{predictionResult.risk_level}</span></p>
         <p>{predictionResult.message}</p>
         
-        {allResults.length > 0 && (
+        {predictionResult.patient_info && Object.keys(predictionResult.patient_info).length > 0 && (
+          <div className="patient-info">
+            <h4>Patient Information:</h4>
+            <pre>
+              {Object.entries(predictionResult.patient_info).map(([key, value]) => (
+                `${key}: ${value}\n`
+              )).join('')}
+            </pre>
+          </div>
+        )}
+        
+        {predictionResult.table_data && predictionResult.table_data.length > 0 ? (
           <div className="prediction-table-container">
             <h4>Test Results</h4>
             <table className="prediction-table">
               <thead>
                 <tr>
-                  <th>Test</th>
-                  <th>Value</th>
+                  <th>Parameter</th>
+                  <th>Tested Value</th>
+                  <th>Unit</th>
                   <th>Normal Range</th>
-                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                {allResults.map((result, index) => (
-                  <tr key={index} className={predictionResult.abnormal_results.some(r => r.test === result.test) ? 'abnormal' : 'normal'}>
-                    <td>{result.test}</td>
-                    <td>{result.value}</td>
-                    <td>Up to {result.threshold}</td>
-                    <td>{result.value > result.threshold ? 'Abnormal' : 'Normal'}</td>
+                {predictionResult.table_data.map((row, index) => (
+                  <tr key={index}>
+                    <td>{row[0]}</td>
+                    <td>{row[1]}</td>
+                    <td>{row[2]}</td>
+                    <td>{row[3]}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+        ) : (
+          <p>No test results found in the uploaded PDF.</p>
         )}
       </div>
     );
