@@ -5,7 +5,7 @@
 # Disease Prediction Project
 
 ## Overview
-This project is a web-based Disease Prediction system designed to predict possible diseases based on user-input symptoms. The frontend is built with **HTML** and **CSS** to provide a responsive and user-friendly interface, while the backend uses a Machine Learning model for accurate predictions.
+This project was my project of third year of engineering it is a web-based Disease Prediction system designed to predict possible diseases based on user-input symptoms. The frontend is built with **HTML** and **CSS** to provide a responsive and user-friendly interface, while the backend uses a Machine Learning model for accurate predictions.
 
 ## Features
 - User-friendly web interface for symptom input
@@ -91,6 +91,7 @@ Free to use
 ---
 
 *Created by \[Soham Handore,Kartik Babu,Harsh Chaurasiya,Harikrishna Gurrapu]*
+Special thanks to Kartik babu for Model training
 Contact :SohamHandore 
 Gmail:soham.handore@gmail.com
 ```
