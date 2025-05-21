@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/00889c6f-a83d-4cda-97e0-56d3a861dabd)
+![image](https://github.com/user-attachments/assets/6da7f536-f861-432f-b4ca-c3ac36a1e0fc)
+
 
 
 # Disease Prediction Project
@@ -13,11 +14,10 @@ This project is a web-based Disease Prediction system designed to predict possib
 - Easily extendable with more symptoms and diseases
 
 ## Technologies Used
-- **Frontend:** HTML, CSS
-- **Machine Learning:** Python (e.g., scikit-learn, TensorFlow, or other)
-- **Backend:** (Specify if using Flask, Django, Node.js, etc.)
-- **Others:** (Mention any other tools or libraries)
-
+- Frontend: HTML, CSS
+- Machine Learning: Python (e.g., scikit-learn, TensorFlow, or other)
+- Backend:(using Flask, Django, Node.js, etc.)
+- 
 ## Installation
 
 1. Clone this repository:
@@ -37,10 +37,11 @@ This project is a web-based Disease Prediction system designed to predict possib
    pip install -r requirements.txt
    ```
 
-4. Run the backend server:
+4. Run the Frontend and backend server:
 
    ```bash
-   python app.py
+   cd frontend npm run dev
+and in another terminal cd backend python app.py
    ```
 
 5. Open the frontend by opening `index.html` in your browser or accessing the server URL.
@@ -48,8 +49,8 @@ This project is a web-based Disease Prediction system designed to predict possib
 ## Usage
 
 1. Open the web interface.
-2. Enter symptoms separated by commas.
-3. Click **Predict**.
+2. upload pdf of blood report
+3. Click Predict.
 4. View the predicted disease(s).
 
 ## Project Structure
@@ -86,11 +87,10 @@ disease-prediction/
 
 ## License
 
-This project is licensed under the MIT License.
-
+Free to use
 ---
 
-*Created by \[Your Name]*
+*Created by \[Soham Handore,Kartik Babu,Harsh Chaurasiya,Harikrishna Gurrapu]*
 Contact :SohamHandore 
 Gmail:soham.handore@gmail.com
 ```
