@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/e2d8f9c1-7f15-469b-9c15-12749447329e)
+![image](https://github.com/user-attachments/assets/00889c6f-a83d-4cda-97e0-56d3a861dabd)
+
 
 # Disease Prediction Project
 
