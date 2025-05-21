@@ -1,7 +1,5 @@
 ![image](https://github.com/user-attachments/assets/e2d8f9c1-7f15-469b-9c15-12749447329e)
-Absolutely! Here’s the complete **README.md** content all in one file, ready for you to copy and paste directly:
 
-````markdown
 # Disease Prediction Project
 
 ## Overview
